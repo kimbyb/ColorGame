@@ -22,12 +22,21 @@ function init() {
 
 function setUpModeBtn() {
     for (var i = 0; i < modeButtons.length; i++) {
-        modeButtons[i].addEventListener("click", function() {
+        modeButtons[i].addEventListener("click", function () {
             modeButtons[0].classList.remove("selected");
             modeButtons[1].classList.remove("selected");
             this.classList.add("selected");
-            this.textContent === "Easy" ? numSquares = 3 : numSquares = 6;
-
+            //this.textContent === "Easy" ? numSquares = 3 : numSquares = 6;
+            if (this.textContent === "Easy") {
+                numSquares = 3;
+                console.log(numSquares);
+            } else if (this.textContent == "Hard") {
+                numSquares = 6;
+                console.log(numSquares);
+            } else if (this.textContent == "Extreme") {
+                numSquares = 12;
+                console.log(numSquares);
+            }
             reset();
             //how many squares
             //pick new color
@@ -41,7 +50,7 @@ function setUpSquares() {
     for (var i = 0; i < squares.length; i++) {
         squares[i].style.backgroundColor = colors[i];
         //clicking on a square
-        squares[i].addEventListener("click", function() {
+        squares[i].addEventListener("click", function () {
             //grab a color of clicked square
             var clickedColor = this.style.backgroundColor;
             //compare color to picked
@@ -81,7 +90,7 @@ function reset() {
 }
 
 
-resetButton.addEventListener("click", function() {
+resetButton.addEventListener("click", function () {
     reset();
 });
 
